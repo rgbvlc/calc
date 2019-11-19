@@ -1,0 +1,216 @@
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>Windows 7 js kalkulator</title>
+   
+        <style>
+            #content{
+                background-image: linear-gradient(#edf4fc,#edf4fc);
+                padding: 10px;
+                margin-left: 5px;
+                padding-left: 15px;
+                border-left:14px solid lightgray;
+                border-right:14px solid lightgray;
+                border-bottom:14px solid lightgray;
+                width:202px; 
+                clear: both;
+            }
+            .button{
+                padding: 15px;
+                text-align: center;
+                width:40px;
+                height:20px;
+                margin: 3px;
+            }
+            #tekst{
+                font-size: 20px;
+                width: 200px;
+                text-align: right;
+            }
+            .button:hover{
+                background-color: yellow;
+                opacity: 0.6;
+            }
+            
+            #menu{
+                clear: both;
+                background-color: #f5f6f7;
+                width: 209px;
+                padding: 3px;
+                margin-left: 5px;
+                padding-left: 15px;
+                border-left:14px solid lightgray;
+                border-right:14px solid lightgray;
+                height: 28px;
+            }
+            
+            .submen{
+                float: left;
+                width: 40px;
+                padding: 3px;
+                text-align: center;
+            }
+            
+            .submen:hover{
+                background-color: #c7c5c1;
+                cursor: pointer;
+            }
+            #caption{
+                background-color: lightgray;
+                width: 237px;
+                padding: 3px;
+                margin-left: 5px;
+                padding-left: 15px;
+                height: 30px;
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+            
+            .submen1{
+                float: right;
+                width: 34px;
+                padding: 3px;
+                text-align: center;
+            }
+            
+            .submen1:hover{
+                background-color: #ed2626;
+                cursor: pointer;
+                opacity: 0.7;
+            }
+            #podpis{
+                float: left;
+                padding-left: 15px;
+            }
+            
+            .button_s{
+                padding: 15px;
+                text-align: center;
+                width:92px;
+                height:20px;
+                margin: 3px;
+            }
+            
+            .button_s:hover{
+                background-color: yellow;
+                opacity: 0.6;
+            }
+
+            .button_s2{
+                padding: 15px;
+                text-align: center;
+                width:40px;
+                height:75px;
+                margin: 3px;
+            }
+            
+            .button_s:hover{
+                background-color: yellow;
+                opacity: 0.6;
+            }
+        </style>
+        
+        
+    <script>
+ 
+    //#edf4fc color1
+    //#edf4fccolor2
+    var rownanie="";
+    function insert(num){//wypisz na tekscie
+        if(["+","-","*","/"].includes(num)){
+            formularz.tekst.value="";
+            console.log(formularz.tekst.value);
+        }
+        else{}
+        rownanie+=String(num);
+        formularz.tekst.value=rownanie;
+        console.log(rownanie);
+    }
+    
+    function square(){
+        formularz.tekst.value="";
+        rownanie=eval(Math.sqrt(rownanie).toFixed(3))
+        formularz.tekst.value=rownanie;
+        console.log(rownanie);
+        
+    }
+    function rev(){
+        formularz.tekst.value="";
+        rownanie=eval(rownanie*(-1));
+        formularz.tekst.value=rownanie;
+        console.log(rownanie);
+        
+    }
+        
+    var licznik=0;    
+    function result(){
+        licznik++;
+        var dzialanie=String(rownanie[rownanie.length-2]+rownanie[rownanie.length-1]);
+        console.log(dzialanie);
+        rownanie=eval(rownanie)
+        formularz.tekst.value=rownanie;
+        return dzialanie;
+        }
+    function result2(){
+        dzialanie=result();
+        formularz.tekst.value="";
+        var wynik=String(eval(rownanie));
+        wynik=wynik+dzialanie;
+        formularz.tekst.value=eval(wynik);
+        console.log(dzialanie);
+        }
+    function fianl_result(){
+            if(!licznik)
+                result();
+            
+            else
+                result2();
+        }
+        
+        
+    </script>
+    </head>
+    
+    <body>
+        <div id="caption"><div id="podpis">Kalkulator</div><div class="submen1">-</div> <div class="submen1">&#9633;</div> <div class="submen1">x</div></div>
+        <div id="menu"><div class="submen">View</div> <div class="submen">Edit</div> <div class="submen">Help</div></div>
+    <div id="content">
+        <form name="formularz">
+        <input id="tekst" type="text" size="13" name="tekst" >
+        </form>
+        <table>
+            <tr>
+            <td><input class="button" type="button" value="+-" name="rev" onClick="rev(formularz.tekst.value)"/></td>
+            <td><input class="button" type="button" value="C" name="C" onClick="window.location.reload();" /></td>
+            <td><input class="button" type="button" value="sqrt" name="sqrt" onClick="square(formularz.tekst.value)"/></td>
+            <td><input class="button" type="button" value="/" name="/" onClick="insert('/')"/></td>
+            </tr>
+            <tr>
+            <td><input class="button" type="button" value="7" name="7" onClick="insert('7')"/></td>
+            <td><input class="button" type="button" value="8" name="8" onClick="insert('8')"/></td></td>
+            <td><input class="button" type="button" value="9" name="9" onClick="insert('9')"/></td></td>
+            <td><input class="button" type="button" value="*" name="*" onClick="insert('*')"/></td></td>
+            </tr>
+            <tr>
+            <td><input class="button" type="button" value="4" name="4" onClick="insert('4')"/></td></td>
+            <td><input class="button" type="button" value="5" name="5" onClick="insert('5')"/></td></td>
+            <td><input class="button" type="button" value="6" name="6" onClick="insert('6')"/></td></td>
+            <td><input class="button" type="button" value="-" name="-" onClick="insert('-')"/></td></td>
+            </tr>
+            <tr>
+            <td><input class="button" type="button" value="3" name="3" onClick="insert('3')"/></td></td>
+            <td><input class="button" type="button" value="2" name="2" onClick="insert('2')"/></td></td>
+            <td><input class="button" type="button" value="1" name="1" onClick="insert('1')"/></td></td>
+            <td rowspan="2"><input class="button_s2"  type="button" value="=" name="="  onClick="fianl_result()"/></td>
+
+            </tr>
+            <tr>
+            <td colspan="2"><input class="button_s" type="button" value="0" name="0" onClick="insert('0')"/></td></td>
+            <td><input class="button" type="button" value="+" name="+" onClick="insert('+')"/></td></td>
+
+            </tr>
+        </table>
+    </div>
+   
+    </body>
+</html>
